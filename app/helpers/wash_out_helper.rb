@@ -30,8 +30,8 @@ module WashOutHelper
   def wsdl_data(xml, params)
     params.each do |param|
       next if param.attribute?
-
-      tag_name = param.name
+      
+      tag_name = params.name == 'requestXml' ? 'waa:' + params.name : param.name
       param_options = wsdl_data_options(param)
       param_options.merge! wsdl_data_attrs(param)
 
