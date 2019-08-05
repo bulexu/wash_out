@@ -143,14 +143,22 @@ module WashOut
       if [Array, Symbol].include?(definition.class)
         definition = { :value => definition }
       end
-
+      
+      puts "=====这里是定义===="
       if definition.is_a? Hash
         definition.map do |name, opt|
+          puts name, opt
           if opt.is_a? WashOut::Param
+            puts 1
+            puts opt
             opt
           elsif opt.is_a? Array
+            puts 2
+            puts  WashOut::Param.new(soap_config, name, opt[0], true)
             WashOut::Param.new(soap_config, name, opt[0], true)
           else
+            puts 3
+            puts WashOut::Param.new(soap_config, name, opt)
             WashOut::Param.new(soap_config, name, opt)
           end
         end
