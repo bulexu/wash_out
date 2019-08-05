@@ -154,11 +154,12 @@ module WashOut
             opt
           elsif opt.is_a? Array
             puts 2
-            puts  WashOut::Param.new(soap_config, name, opt[0], true)
+            puts  WashOut::Param.new(soap_config, name, opt[0], true).inspect
             WashOut::Param.new(soap_config, name, opt[0], true)
           else
             puts 3
-            puts WashOut::Param.new(soap_config, name, opt)
+            puts soap_config.inspect
+            puts WashOut::Param.new(soap_config, name, opt).inspect
             WashOut::Param.new(soap_config, name, opt)
           end
         end
