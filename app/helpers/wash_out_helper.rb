@@ -1,6 +1,8 @@
 module WashOutHelper
 
   def wsdl_data_options(param)
+    puts "==========try=========="
+    puts params
     case controller.soap_config.wsdl_style
     when 'rpc'
       if param.map.present? || !param.value.nil?
