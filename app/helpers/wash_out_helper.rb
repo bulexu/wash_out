@@ -1,8 +1,6 @@
 module WashOutHelper
 
   def wsdl_data_options(param)
-    puts "==========try=========="
-    puts params
     case controller.soap_config.wsdl_style
     when 'rpc'
       if param.map.present? || !param.value.nil?
@@ -30,9 +28,8 @@ module WashOutHelper
   def wsdl_data(xml, params)
     params.each do |param|
       next if param.attribute?
-      puts "======params======="
-      puts params.inspect
-      tag_name = param.name == 'requestXml' ? 'waa:' + param.name : param.name
+      
+      tag_name = param.name
       param_options = wsdl_data_options(param)
       param_options.merge! wsdl_data_attrs(param)
 
